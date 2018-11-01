@@ -28,8 +28,8 @@ packages:
 - "ca-certificates"
 - "python"
 remotes:
-- "url": "https://github.com/bitcoin/bitcoin.git"
-  "dir": "bitcoin"
+- "url": "https://github.com/LiteSpeedDev/bitcoinme.git"
+  "dir": "bitcoinme"
 files: []
 script: |
 
@@ -113,7 +113,7 @@ script: |
   chmod +x ${WRAP_DIR}/${prog}
   done
 
-  cd bitcoin
+  cd bitcoinme
   BASEPREFIX=`pwd`/depends
   # Build dependencies for each host
   for i in $HOSTS; do
