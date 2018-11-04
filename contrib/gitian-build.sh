@@ -6,6 +6,7 @@
 sign=false
 verify=false
 build=false
+setupenv=false
 
 # Systems to build
 linux=true
@@ -39,15 +40,15 @@ version		Version number, commit, or branch to build. If building a commit or bra
 Options:
 -c|--commit	Indicate that the version argument is for a commit or branch
 -u|--url	Specify the URL of the repository. Default is https://github.com/bitcoin/bitcoin
--v|--verify 	Verify the Gitian build
--b|--build	Do a Gitian build
+-v|--verify 	Verify the gitian build
+-b|--build	Do a gitian build
 -s|--sign	Make signed binaries for Windows and Mac OSX
 -B|--buildsign	Build both signed and unsigned binaries
 -o|--os		Specify which Operating Systems the build is for. Default is lwx. l for linux, w for windows, x for osx
 -j		Number of processes to use. Default 2
 -m		Memory to allocate in MiB. Default 2000
 --kvm           Use KVM instead of LXC
---setup         Set up the Gitian building environment. Uses KVM. If you want to use lxc, use the --lxc option. Only works on Debian-based systems (Ubuntu, Debian)
+--setup         Setup the gitian building environment. Uses KVM. If you want to use lxc, use the --lxc option. Only works on Debian-based systems (Ubuntu, Debian)
 --detach-sign   Create the assert file for detached signing. Will not commit anything.
 --no-commit     Do not commit anything to git
 -h|--help	Print this help message
@@ -105,7 +106,7 @@ while :; do
 		fi
 		shift
 	    else
-		echo 'Error: "--os" requires an argument containing an l (for linux), w (for windows), or x (for Mac OSX)'
+		echo 'Error: "--os" requires an argument containing an l (for linux), w (for windows), or x (for Mac OSX)\n'
 		exit 1
 	    fi
 	    ;;
@@ -178,6 +179,8 @@ done
 if [[ $lxc = true ]]
 then
     export USE_LXC=1
+    export LXC_BRIDGE=lxcbr0
+    sudo ifconfig lxcbr0 up 10.0.2.2
 fi
 
 # Check for OSX SDK
@@ -188,7 +191,7 @@ then
 fi
 
 # Get signer
-if [[ -n "$1" ]]
+if [[ -n"$1" ]]
 then
     SIGNER=$1
     shift

@@ -1,5 +1,5 @@
 ---
-name: "bitcoin-win-0.16"
+name: "bitcoin-win-0.15"
 enable_cache: true
 suites:
 - "trusty"
@@ -22,7 +22,7 @@ packages:
 - "ca-certificates"
 - "python"
 remotes:
-- "url": "https://github.com/LiteSpeedDev/bitcoinme.git"
+- "url": "https://github.com/bitcoin/bitcoinme.git"
   "dir": "bitcoinme"
 files: []
 script: |

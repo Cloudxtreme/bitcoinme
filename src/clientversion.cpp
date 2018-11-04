@@ -1,15 +1,16 @@
-// Copyright (c) 2012-2017 The Bitcoin Core developers
+// Copyright (c) 2012-2016 The Bitcoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include <clientversion.h>
+#include "clientversion.h"
 
-#include <tinyformat.h>
+#include "tinyformat.h"
 
+#include <string>
 
 /**
  * Name of client reported in the 'version' message. Report the same name
- * for both bitcoind and bitcoin-qt, to make it harder for attackers to
+ * for both bitcoind and bitcoin-core, to make it harder for attackers to
  * target servers or GUI users specifically.
  */
 const std::string CLIENT_NAME("Satoshi");
@@ -38,14 +39,14 @@ const std::string CLIENT_NAME("Satoshi");
 
 //! First, include build.h if requested
 #ifdef HAVE_BUILD_INFO
-#include <obj/build.h>
+#include "build.h"
 #endif
 
 //! git will put "#define GIT_ARCHIVE 1" on the next line inside archives. 
 #define GIT_ARCHIVE 1
 #ifdef GIT_ARCHIVE
-#define GIT_COMMIT_ID "f56c00b2345c"
-#define GIT_COMMIT_DATE "Tue, 18 Sep 2018 09:23:39 +0200"
+#define GIT_COMMIT_ID "e44150feed53"
+#define GIT_COMMIT_DATE "Wed, 3 Oct 2018 13:05:10 +0200"
 #endif
 
 #define BUILD_DESC_WITH_SUFFIX(maj, min, rev, build, suffix) \
