@@ -231,6 +231,11 @@ public:
         // nodes with support for servicebits filtering should be at the top
         vSeeds.emplace_back("176.9.78.51:8963", true);
         vSeeds.emplace_back("206.189.31.72:9333", true);
+        vSeeds.emplace_back("104.223.117.154", true);
+        vSeeds.emplace_back("155.94.252.40", true);
+        vSeeds.emplace_back("46.4.104.7", true);
+        vSeeds.emplace_back("213.239.221.114", true);
+        vSeeds.emplace_back("192.161.51.151", true);
         //vSeeds.emplace_back("testnet-seed.bluematt.me", false);
 
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,111);
